@@ -286,7 +286,6 @@ const courses = [
 
 const STORAGE_KEY = "skillverse_v12_progress";
 
-
 const defaultState = {
   completed: {},
   xp: 0,
@@ -294,9 +293,7 @@ const defaultState = {
   lastStudyDate: null
 };
 
-
 let state = loadState();
-
 
 function loadState() {
   try {
@@ -315,17 +312,12 @@ function loadState() {
     };
   } catch (error) {
     console.warn("Could not load SkillVerse progress.", error);
-
     return { ...defaultState };
   }
 }
 
-
 function saveState() {
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(state)
-  );
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
 
@@ -333,44 +325,26 @@ function saveState() {
    DOM ELEMENTS
    ========================================================= */
 
-const courseGrid =
-  document.getElementById("courseGrid");
+const courseGrid = document.getElementById("courseGrid");
+const searchInput = document.getElementById("searchInput");
+const categoryFilter = document.getElementById("categoryFilter");
+const courseModal = document.getElementById("courseModal");
+const modalContent = document.getElementById("modalContent");
+const toast = document.getElementById("toast");
+const menuButton = document.getElementById("menuButton");
+const mobileMenu = document.getElementById("mobileMenu");
 
-const searchInput =
-  document.getElementById("searchInput");
+const xpBar = document.getElementById("xpBar");
+const xpValue = document.getElementById("xpValue");
+const xpNext = document.getElementById("xpNext");
 
-const categoryFilter =
-  document.getElementById("categoryFilter");
-
-const courseModal =
-  document.getElementById("courseModal");
-
-const modalContent =
-  document.getElementById("modalContent");
-
-const toast =
-  document.getElementById("toast");
-
-const menuButton =
-  document.getElementById("menuButton");
-
-const mobileMenu =
-  document.getElementById("mobileMenu");
-
-const xpBar =
-  document.getElementById("xpBar");
-
-const xpValue =
-  document.getElementById("xpValue");
-
-const xpNext =
-  document.getElementById("xpNext");
-
-const heroProgress =
-  document.getElementById("heroProgress");
-
+const heroProgress = document.getElementById("heroProgress");
 const heroProgressCircle =
   document.getElementById("heroProgressCircle");
+
+/* FIXED: this was missing */
+const heroPlayButton =
+  document.getElementById("heroPlayButton");
 
 
 /* =========================================================
@@ -381,7 +355,6 @@ function getAllLectures() {
   return courses.flatMap(course => course.lectures);
 }
 
-
 function getTotalLessons() {
   return courses.reduce(
     (total, course) => total + course.lectures.length,
@@ -389,21 +362,18 @@ function getTotalLessons() {
   );
 }
 
-
 function getCompletedCount() {
   return Object.values(state.completed)
     .filter(Boolean)
     .length;
 }
 
-
 function getCourseCompletedCount(course) {
   return course.lectures.filter(
     (_, index) =>
-      state.completed[`${course.id}-${index}`]
+      Boolean(state.completed[`${course.id}-${index}`])
   ).length;
 }
-
 
 function getCourseProgress(course) {
   if (!course.lectures.length) {
@@ -417,16 +387,13 @@ function getCourseProgress(course) {
   );
 }
 
-
 function getLevel() {
   return Math.floor(state.xp / 100) + 1;
 }
 
-
 function getLevelXP() {
   return state.xp % 100;
 }
-
 
 function getTodayKey() {
   const date = new Date();
@@ -437,7 +404,6 @@ function getTodayKey() {
     date.getDate()
   ].join("-");
 }
-
 
 function getYesterdayKey() {
   const date = new Date();
@@ -475,7 +441,6 @@ function updateStreak() {
   state.streak = 0;
 }
 
-
 function registerStudyActivity() {
   const today = getTodayKey();
 
@@ -490,8 +455,6 @@ function registerStudyActivity() {
   }
 
   state.lastStudyDate = today;
-
-  saveState();
 }
 
 
@@ -501,14 +464,9 @@ function registerStudyActivity() {
 
 function addXP(amount) {
   state.xp += amount;
-
   registerStudyActivity();
-
   saveState();
-
   updateDashboard();
-
-  showToast(`+${amount} XP earned! ⭐`);
 }
 
 
@@ -532,14 +490,11 @@ function setupCategories() {
     ${categories
       .map(
         category =>
-          `<option value="${category}">
-            ${category}
-          </option>`
+          `<option value="${category}">${category}</option>`
       )
       .join("")}
   `;
 }
-
 
 function filterCourses() {
   const query =
@@ -552,15 +507,9 @@ function filterCourses() {
 
   const filtered = courses.filter(course => {
     const matchesSearch =
-      course.title
-        .toLowerCase()
-        .includes(query) ||
-      course.description
-        .toLowerCase()
-        .includes(query) ||
-      course.category
-        .toLowerCase()
-        .includes(query);
+      course.title.toLowerCase().includes(query) ||
+      course.description.toLowerCase().includes(query) ||
+      course.category.toLowerCase().includes(query);
 
     const matchesCategory =
       category === "all" ||
@@ -598,11 +547,8 @@ function renderCourses(list = courses) {
 
   courseGrid.innerHTML = list
     .map(course => {
-      const progress =
-        getCourseProgress(course);
-
-      const completed =
-        progress === 100;
+      const progress = getCourseProgress(course);
+      const completed = progress === 100;
 
       return `
         <article
@@ -613,9 +559,7 @@ function renderCourses(list = courses) {
             --cover2: ${course.color2};
           "
         >
-
           <div class="course-cover">
-
             <span class="course-icon">
               ${course.icon}
             </span>
@@ -623,16 +567,12 @@ function renderCourses(list = courses) {
             <span class="course-badge">
               ${completed ? "Completed ✓" : course.level}
             </span>
-
           </div>
 
           <div class="course-body">
-
             <h3>${course.title}</h3>
 
-            <p>
-              ${course.description}
-            </p>
+            <p>${course.description}</p>
 
             <div class="meta">
               <span>📚 ${course.lessons} lessons</span>
@@ -643,9 +583,7 @@ function renderCourses(list = courses) {
             <div class="card-progress">
               <i style="width: ${progress}%"></i>
             </div>
-
           </div>
-
         </article>
       `;
     })
@@ -699,12 +637,10 @@ function openCourse(courseId) {
 
     <h2>${course.title}</h2>
 
-    <p>
-      ${course.description}
-    </p>
+    <p>${course.description}</p>
 
     <div class="meta" style="margin-top: 12px;">
-      <span>📚 ${course.lessons} lessons</span>
+      <span>📚 ${course.lectures.length} lessons</span>
       <span>•</span>
       <span>${progress}% complete</span>
     </div>
@@ -717,11 +653,8 @@ function openCourse(courseId) {
 
       ${course.lectures
         .map((lecture, index) => {
-          const key =
-            `${course.id}-${index}`;
-
-          const done =
-            Boolean(state.completed[key]);
+          const key = `${course.id}-${index}`;
+          const done = Boolean(state.completed[key]);
 
           return `
             <div class="lecture-row ${done ? "done" : ""}">
@@ -732,12 +665,11 @@ function openCourse(courseId) {
 
               <div>
                 <b>${lecture.title}</b>
-                <small>
-                  ${lecture.duration}
-                </small>
+                <small>${lecture.duration}</small>
               </div>
 
               <button
+                type="button"
                 class="button secondary-button lecture-button"
                 data-course="${course.id}"
                 data-index="${index}"
@@ -753,10 +685,7 @@ function openCourse(courseId) {
     </div>
 
     <div class="panel">
-
-      <strong>
-        Your progress
-      </strong>
+      <strong>Your progress</strong>
 
       <p>
         ${getCourseCompletedCount(course)}
@@ -764,18 +693,18 @@ function openCourse(courseId) {
         ${course.lectures.length}
         lessons completed.
       </p>
-
     </div>
   `;
 
   courseModal.classList.add("open");
-
   document.body.style.overflow = "hidden";
 
   document
     .querySelectorAll(".lecture-button")
     .forEach(button => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", event => {
+        event.stopPropagation();
+
         openLecture(
           button.dataset.course,
           Number(button.dataset.index)
@@ -800,7 +729,7 @@ function openLecture(courseId, index) {
   const lecture =
     course.lectures[index];
 
-  if (!lecture) {
+  if (!lecture || !modalContent) {
     return;
   }
 
@@ -833,9 +762,7 @@ function openLecture(courseId, index) {
 
     <h2>${lecture.title}</h2>
 
-    <p>
-      ${lecture.description}
-    </p>
+    <p>${lecture.description}</p>
 
     <div class="lecture-info">
 
@@ -869,6 +796,7 @@ function openLecture(courseId, index) {
     </div>
 
     <button
+      type="button"
       class="button primary-button complete-button"
       id="completeLectureButton"
       ${alreadyComplete ? "disabled" : ""}
@@ -881,6 +809,7 @@ function openLecture(courseId, index) {
     </button>
 
     <button
+      type="button"
       class="button secondary-button"
       id="backToCourseButton"
       style="
@@ -906,10 +835,7 @@ function openLecture(courseId, index) {
     completeButton.addEventListener(
       "click",
       () => {
-        completeLecture(
-          courseId,
-          index
-        );
+        completeLecture(courseId, index);
       }
     );
   }
@@ -974,15 +900,9 @@ function getVisibleCourses() {
 
   return courses.filter(course => {
     const matchesSearch =
-      course.title
-        .toLowerCase()
-        .includes(query) ||
-      course.description
-        .toLowerCase()
-        .includes(query) ||
-      course.category
-        .toLowerCase()
-        .includes(query);
+      course.title.toLowerCase().includes(query) ||
+      course.description.toLowerCase().includes(query) ||
+      course.category.toLowerCase().includes(query);
 
     const matchesCategory =
       category === "all" ||
@@ -998,41 +918,24 @@ function getVisibleCourses() {
    ========================================================= */
 
 function updateDashboard() {
-  const level =
-    getLevel();
-
-  const currentXP =
-    getLevelXP();
-
-  const completed =
-    getCompletedCount();
-
-  const total =
-    getTotalLessons();
+  const level = getLevel();
+  const currentXP = getLevelXP();
+  const completed = getCompletedCount();
+  const total = getTotalLessons();
 
   const progress =
     total
       ? Math.round((completed / total) * 100)
       : 0;
 
-  updateXPDisplay(
-    level,
-    currentXP
-  );
-
+  updateXPDisplay(level, currentXP);
   updateHeroProgress(progress);
-
-  updateStatisticCards(
-    completed,
-    progress
-  );
+  updateStatisticCards(completed, progress);
 }
-
 
 function updateXPDisplay(level, currentXP) {
   if (xpBar) {
-    xpBar.style.width =
-      `${currentXP}%`;
+    xpBar.style.width = `${currentXP}%`;
   }
 
   if (xpValue) {
@@ -1096,14 +999,28 @@ function updateStatisticCards(
     );
 
   if (cards.length >= 3) {
-    cards[0].querySelector("strong")
-      .textContent = completed;
+    const first =
+      cards[0].querySelector("strong");
 
-    cards[1].querySelector("strong")
-      .textContent = `${progress}%`;
+    const second =
+      cards[1].querySelector("strong");
 
-    cards[2].querySelector("strong")
-      .textContent = state.streak;
+    const third =
+      cards[2].querySelector("strong");
+
+    if (first) {
+      first.textContent = completed;
+    }
+
+    if (second) {
+      second.textContent =
+        `${progress}%`;
+    }
+
+    if (third) {
+      third.textContent =
+        state.streak;
+    }
   }
 }
 
@@ -1116,7 +1033,7 @@ function getAchievements() {
   const completed =
     getCompletedCount();
 
-  const achievements = [
+  return [
     {
       icon: "🚀",
       title: "First Step",
@@ -1176,10 +1093,7 @@ function getAchievements() {
       unlocked: completed >= 25
     }
   ];
-
-  return achievements;
 }
-
 
 function updateAchievements() {
   const grid =
@@ -1191,11 +1105,8 @@ function updateAchievements() {
     return;
   }
 
-  const achievements =
-    getAchievements();
-
   grid.innerHTML =
-    achievements
+    getAchievements()
       .map(achievement => `
         <div
           class="
@@ -1271,10 +1182,8 @@ function closeModal() {
   }
 
   courseModal.classList.remove("open");
-
   document.body.style.overflow = "";
 }
-
 
 document
   .querySelectorAll("[data-close]")
@@ -1284,7 +1193,6 @@ document
       closeModal
     );
   });
-
 
 document.addEventListener(
   "keydown",
@@ -1303,7 +1211,7 @@ document.addEventListener(
    MOBILE MENU
    ========================================================= */
 
-if (menuButton) {
+if (menuButton && mobileMenu) {
   menuButton.addEventListener(
     "click",
     () => {
@@ -1317,14 +1225,15 @@ if (menuButton) {
   );
 }
 
-
 document
   .querySelectorAll(".mobile-menu a")
   .forEach(link => {
     link.addEventListener(
       "click",
       () => {
-        mobileMenu.classList.remove("open");
+        if (mobileMenu) {
+          mobileMenu.classList.remove("open");
+        }
 
         if (menuButton) {
           menuButton.textContent = "☰";
@@ -1339,9 +1248,7 @@ document
    ========================================================= */
 
 document
-  .querySelectorAll(
-    '[href="#courses"]'
-  )
+  .querySelectorAll('[href="#courses"]')
   .forEach(button => {
     button.addEventListener(
       "click",
@@ -1354,12 +1261,13 @@ document
   });
 
 
+/* FIXED HERO PLAY BUTTON */
+
 if (heroPlayButton) {
   heroPlayButton.addEventListener(
     "click",
     () => {
-      const firstCourse =
-        courses[0];
+      const firstCourse = courses[0];
 
       if (firstCourse) {
         openCourse(firstCourse.id);
@@ -1380,7 +1288,6 @@ if (searchInput) {
   );
 }
 
-
 if (categoryFilter) {
   categoryFilter.addEventListener(
     "change",
@@ -1395,14 +1302,12 @@ if (categoryFilter) {
 
 let toastTimer;
 
-
 function showToast(message) {
   if (!toast) {
     return;
   }
 
-  toast.textContent =
-    message;
+  toast.textContent = message;
 
   toast.classList.add("show");
 
@@ -1416,10 +1321,11 @@ function showToast(message) {
 
 
 /* =========================================================
-   EMPTY STATE STYLES
+   EXTRA STYLES
    ========================================================= */
 
-const extraStyles = document.createElement("style");
+const extraStyles =
+  document.createElement("style");
 
 extraStyles.textContent = `
   .empty-state {
@@ -1509,9 +1415,42 @@ extraStyles.textContent = `
     cursor: default;
   }
 
+  .lecture-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .lecture-row > div {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .lecture-row b {
+    display: block;
+  }
+
+  .lecture-row small {
+    display: block;
+    margin-top: 3px;
+    color: var(--muted);
+  }
+
+  .lecture-button {
+    flex-shrink: 0;
+  }
+
   @media (max-width: 500px) {
     .lecture-info {
       grid-template-columns: 1fr;
+    }
+
+    .lecture-row {
+      flex-wrap: wrap;
+    }
+
+    .lecture-button {
+      width: 100%;
     }
   }
 `;
@@ -1537,7 +1476,7 @@ saveState();
 
 
 /* =========================================================
-   STARTUP MESSAGE
+   STARTUP
    ========================================================= */
 
 console.log(
