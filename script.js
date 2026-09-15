@@ -1,7 +1,10 @@
+```javascript
 /* =========================================================
    SKILLVERSE v1.2
    Main JavaScript
+   Fixed Lecture System
    ========================================================= */
+
 
 /* =========================================================
    COURSE DATA
@@ -300,7 +303,10 @@ function loadState() {
     const saved = localStorage.getItem(STORAGE_KEY);
 
     if (!saved) {
-      return { ...defaultState };
+      return {
+        ...defaultState,
+        completed: {}
+      };
     }
 
     const parsed = JSON.parse(saved);
@@ -312,12 +318,23 @@ function loadState() {
     };
   } catch (error) {
     console.warn("Could not load SkillVerse progress.", error);
-    return { ...defaultState };
+
+    return {
+      ...defaultState,
+      completed: {}
+    };
   }
 }
 
 function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  try {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(state)
+    );
+  } catch (error) {
+    console.warn("Could not save SkillVerse progress.", error);
+  }
 }
 
 
@@ -325,24 +342,45 @@ function saveState() {
    DOM ELEMENTS
    ========================================================= */
 
-const courseGrid = document.getElementById("courseGrid");
-const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
-const courseModal = document.getElementById("courseModal");
-const modalContent = document.getElementById("modalContent");
-const toast = document.getElementById("toast");
-const menuButton = document.getElementById("menuButton");
-const mobileMenu = document.getElementById("mobileMenu");
+const courseGrid =
+  document.getElementById("courseGrid");
 
-const xpBar = document.getElementById("xpBar");
-const xpValue = document.getElementById("xpValue");
-const xpNext = document.getElementById("xpNext");
+const searchInput =
+  document.getElementById("searchInput");
 
-const heroProgress = document.getElementById("heroProgress");
+const categoryFilter =
+  document.getElementById("categoryFilter");
+
+const courseModal =
+  document.getElementById("courseModal");
+
+const modalContent =
+  document.getElementById("modalContent");
+
+const toast =
+  document.getElementById("toast");
+
+const menuButton =
+  document.getElementById("menuButton");
+
+const mobileMenu =
+  document.getElementById("mobileMenu");
+
+const xpBar =
+  document.getElementById("xpBar");
+
+const xpValue =
+  document.getElementById("xpValue");
+
+const xpNext =
+  document.getElementById("xpNext");
+
+const heroProgress =
+  document.getElementById("heroProgress");
+
 const heroProgressCircle =
   document.getElementById("heroProgressCircle");
 
-/* FIXED: this was missing */
 const heroPlayButton =
   document.getElementById("heroPlayButton");
 
@@ -352,12 +390,15 @@ const heroPlayButton =
    ========================================================= */
 
 function getAllLectures() {
-  return courses.flatMap(course => course.lectures);
+  return courses.flatMap(
+    course => course.lectures
+  );
 }
 
 function getTotalLessons() {
   return courses.reduce(
-    (total, course) => total + course.lectures.length,
+    (total, course) =>
+      total + course.lectures.length,
     0
   );
 }
@@ -371,7 +412,11 @@ function getCompletedCount() {
 function getCourseCompletedCount(course) {
   return course.lectures.filter(
     (_, index) =>
-      Boolean(state.completed[`${course.id}-${index}`])
+      Boolean(
+        state.completed[
+          `${course.id}-${index}`
+        ]
+      )
   ).length;
 }
 
@@ -381,9 +426,10 @@ function getCourseProgress(course) {
   }
 
   return Math.round(
-    (getCourseCompletedCount(course) /
-      course.lectures.length) *
-      100
+    (
+      getCourseCompletedCount(course) /
+      course.lectures.length
+    ) * 100
   );
 }
 
@@ -408,7 +454,9 @@ function getTodayKey() {
 function getYesterdayKey() {
   const date = new Date();
 
-  date.setDate(date.getDate() - 1);
+  date.setDate(
+    date.getDate() - 1
+  );
 
   return [
     date.getFullYear(),
@@ -434,7 +482,10 @@ function updateStreak() {
     return;
   }
 
-  if (state.lastStudyDate === getYesterdayKey()) {
+  if (
+    state.lastStudyDate ===
+    getYesterdayKey()
+  ) {
     return;
   }
 
@@ -444,11 +495,16 @@ function updateStreak() {
 function registerStudyActivity() {
   const today = getTodayKey();
 
-  if (state.lastStudyDate === today) {
+  if (
+    state.lastStudyDate === today
+  ) {
     return;
   }
 
-  if (state.lastStudyDate === getYesterdayKey()) {
+  if (
+    state.lastStudyDate ===
+    getYesterdayKey()
+  ) {
     state.streak += 1;
   } else {
     state.streak = 1;
@@ -464,8 +520,11 @@ function registerStudyActivity() {
 
 function addXP(amount) {
   state.xp += amount;
+
   registerStudyActivity();
+
   saveState();
+
   updateDashboard();
 }
 
@@ -481,16 +540,24 @@ function setupCategories() {
 
   const categories = [
     ...new Set(
-      courses.map(course => course.category)
+      courses.map(
+        course => course.category
+      )
     )
   ];
 
   categoryFilter.innerHTML = `
-    <option value="all">All categories</option>
+    <option value="all">
+      All categories
+    </option>
+
     ${categories
       .map(
-        category =>
-          `<option value="${category}">${category}</option>`
+        category => `
+          <option value="${category}">
+            ${category}
+          </option>
+        `
       )
       .join("")}
   `;
@@ -505,18 +572,30 @@ function filterCourses() {
   const category =
     categoryFilter?.value || "all";
 
-  const filtered = courses.filter(course => {
-    const matchesSearch =
-      course.title.toLowerCase().includes(query) ||
-      course.description.toLowerCase().includes(query) ||
-      course.category.toLowerCase().includes(query);
+  const filtered =
+    courses.filter(course => {
+      const matchesSearch =
+        course.title
+          .toLowerCase()
+          .includes(query) ||
 
-    const matchesCategory =
-      category === "all" ||
-      course.category === category;
+        course.description
+          .toLowerCase()
+          .includes(query) ||
 
-    return matchesSearch && matchesCategory;
-  });
+        course.category
+          .toLowerCase()
+          .includes(query);
+
+      const matchesCategory =
+        category === "all" ||
+        course.category === category;
+
+      return (
+        matchesSearch &&
+        matchesCategory
+      );
+    });
 
   renderCourses(filtered);
 }
@@ -534,67 +613,109 @@ function renderCourses(list = courses) {
   if (!list.length) {
     courseGrid.innerHTML = `
       <div class="empty-state">
-        <div class="empty-icon">🔎</div>
-        <h3>No courses found</h3>
+
+        <div class="empty-icon">
+          🔎
+        </div>
+
+        <h3>
+          No courses found
+        </h3>
+
         <p>
-          Try another search or choose a different category.
+          Try another search or choose
+          a different category.
         </p>
+
       </div>
     `;
 
     return;
   }
 
-  courseGrid.innerHTML = list
-    .map(course => {
-      const progress = getCourseProgress(course);
-      const completed = progress === 100;
+  courseGrid.innerHTML =
+    list
+      .map(course => {
+        const progress =
+          getCourseProgress(course);
 
-      return `
-        <article
-          class="course-card"
-          data-course-id="${course.id}"
-          style="
-            --cover1: ${course.color1};
-            --cover2: ${course.color2};
-          "
-        >
-          <div class="course-cover">
-            <span class="course-icon">
-              ${course.icon}
-            </span>
+        const completed =
+          progress === 100;
 
-            <span class="course-badge">
-              ${completed ? "Completed ✓" : course.level}
-            </span>
-          </div>
+        return `
+          <article
+            class="course-card"
+            data-course-id="${course.id}"
+            style="
+              --cover1: ${course.color1};
+              --cover2: ${course.color2};
+            "
+          >
 
-          <div class="course-body">
-            <h3>${course.title}</h3>
+            <div class="course-cover">
 
-            <p>${course.description}</p>
+              <span class="course-icon">
+                ${course.icon}
+              </span>
 
-            <div class="meta">
-              <span>📚 ${course.lessons} lessons</span>
-              <span>•</span>
-              <span>${progress}% complete</span>
+              <span class="course-badge">
+                ${
+                  completed
+                    ? "Completed ✓"
+                    : course.level
+                }
+              </span>
+
             </div>
 
-            <div class="card-progress">
-              <i style="width: ${progress}%"></i>
+            <div class="course-body">
+
+              <h3>
+                ${course.title}
+              </h3>
+
+              <p>
+                ${course.description}
+              </p>
+
+              <div class="meta">
+                <span>
+                  📚 ${course.lectures.length} lessons
+                </span>
+
+                <span>•</span>
+
+                <span>
+                  ${progress}% complete
+                </span>
+              </div>
+
+              <div class="card-progress">
+                <i
+                  style="
+                    width: ${progress}%;
+                  "
+                ></i>
+              </div>
+
             </div>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
+
+          </article>
+        `;
+      })
+      .join("");
 
   document
     .querySelectorAll(".course-card")
     .forEach(card => {
-      card.addEventListener("click", () => {
-        openCourse(card.dataset.courseId);
-      });
+      card.addEventListener(
+        "click",
+        () => {
+          openCourse(
+            card.dataset.courseId
+          );
+        }
+      );
     });
 }
 
@@ -605,9 +726,15 @@ function renderCourses(list = courses) {
 
 function openCourse(courseId) {
   const course =
-    courses.find(item => item.id === courseId);
+    courses.find(
+      item => item.id === courseId
+    );
 
-  if (!course || !courseModal || !modalContent) {
+  if (
+    !course ||
+    !courseModal ||
+    !modalContent
+  ) {
     return;
   }
 
@@ -626,66 +753,129 @@ function openCourse(courseId) {
           );
       "
     >
+
       <span class="course-icon">
         ${course.icon}
       </span>
+
     </div>
 
     <span class="section-label">
       ${course.category}
     </span>
 
-    <h2>${course.title}</h2>
+    <h2>
+      ${course.title}
+    </h2>
 
-    <p>${course.description}</p>
+    <p>
+      ${course.description}
+    </p>
 
-    <div class="meta" style="margin-top: 12px;">
-      <span>📚 ${course.lectures.length} lessons</span>
+    <div
+      class="meta"
+      style="margin-top: 12px;"
+    >
+
+      <span>
+        📚 ${course.lectures.length} lessons
+      </span>
+
       <span>•</span>
-      <span>${progress}% complete</span>
+
+      <span>
+        ${progress}% complete
+      </span>
+
     </div>
 
     <div class="card-progress">
-      <i style="width: ${progress}%"></i>
+      <i
+        style="
+          width: ${progress}%;
+        "
+      ></i>
     </div>
 
     <div class="lecture-list">
 
-      ${course.lectures
-        .map((lecture, index) => {
-          const key = `${course.id}-${index}`;
-          const done = Boolean(state.completed[key]);
+      ${
+        course.lectures.length
+          ? course.lectures
+              .map(
+                (lecture, index) => {
+                  const key =
+                    `${course.id}-${index}`;
 
-          return `
-            <div class="lecture-row ${done ? "done" : ""}">
+                  const done =
+                    Boolean(
+                      state.completed[key]
+                    );
 
-              <span class="num">
-                ${done ? "✓" : index + 1}
-              </span>
+                  return `
+                    <div
+                      class="
+                        lecture-row
+                        ${done ? "done" : ""}
+                      "
+                    >
 
-              <div>
-                <b>${lecture.title}</b>
-                <small>${lecture.duration}</small>
-              </div>
+                      <span class="num">
+                        ${
+                          done
+                            ? "✓"
+                            : index + 1
+                        }
+                      </span>
 
-              <button
-                type="button"
-                class="button secondary-button lecture-button"
-                data-course="${course.id}"
-                data-index="${index}"
-              >
-                ${done ? "Review" : "Learn"}
-              </button>
+                      <div>
+                        <b>
+                          ${lecture.title}
+                        </b>
 
+                        <small>
+                          ${lecture.duration}
+                        </small>
+                      </div>
+
+                      <button
+                        type="button"
+                        class="
+                          button
+                          secondary-button
+                          lecture-button
+                        "
+                        data-course="${course.id}"
+                        data-index="${index}"
+                      >
+                        ${
+                          done
+                            ? "Review"
+                            : "Learn"
+                        }
+                      </button>
+
+                    </div>
+                  `;
+                }
+              )
+              .join("")
+          : `
+            <div class="empty-state">
+              <h3>
+                No lessons available
+              </h3>
             </div>
-          `;
-        })
-        .join("")}
+          `
+      }
 
     </div>
 
     <div class="panel">
-      <strong>Your progress</strong>
+
+      <strong>
+        Your progress
+      </strong>
 
       <p>
         ${getCourseCompletedCount(course)}
@@ -693,23 +883,62 @@ function openCourse(courseId) {
         ${course.lectures.length}
         lessons completed.
       </p>
+
     </div>
   `;
 
   courseModal.classList.add("open");
-  document.body.style.overflow = "hidden";
 
+  courseModal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.style.overflow =
+    "hidden";
+
+  attachLectureButtons();
+}
+
+
+/* =========================================================
+   LECTURE BUTTONS
+   ========================================================= */
+
+function attachLectureButtons() {
   document
     .querySelectorAll(".lecture-button")
     .forEach(button => {
-      button.addEventListener("click", event => {
-        event.stopPropagation();
 
-        openLecture(
-          button.dataset.course,
-          Number(button.dataset.index)
-        );
-      });
+      button.addEventListener(
+        "click",
+        event => {
+
+          event.preventDefault();
+          event.stopPropagation();
+
+          const courseId =
+            button.dataset.course;
+
+          const index =
+            Number(
+              button.dataset.index
+            );
+
+          /*
+             IMPORTANT:
+             This ONLY opens the lecture.
+
+             It does NOT complete it.
+          */
+
+          openLecture(
+            courseId,
+            index
+          );
+        }
+      );
+
     });
 }
 
@@ -718,18 +947,45 @@ function openCourse(courseId) {
    LECTURE VIEWER
    ========================================================= */
 
-function openLecture(courseId, index) {
+function openLecture(
+  courseId,
+  index
+) {
   const course =
-    courses.find(item => item.id === courseId);
+    courses.find(
+      item => item.id === courseId
+    );
 
   if (!course) {
+    console.error(
+      "Course not found:",
+      courseId
+    );
+
+    return;
+  }
+
+  if (
+    !Number.isInteger(index) ||
+    index < 0 ||
+    index >= course.lectures.length
+  ) {
+    console.error(
+      "Invalid lesson index:",
+      index
+    );
+
     return;
   }
 
   const lecture =
     course.lectures[index];
 
-  if (!lecture || !modalContent) {
+  if (!lecture) {
+    return;
+  }
+
+  if (!modalContent) {
     return;
   }
 
@@ -737,7 +993,16 @@ function openLecture(courseId, index) {
     `${course.id}-${index}`;
 
   const alreadyComplete =
-    Boolean(state.completed[key]);
+    Boolean(
+      state.completed[key]
+    );
+
+  /*
+    The lesson viewer is rendered here.
+
+    Nothing is completed here.
+    Nothing is added to XP here.
+  */
 
   modalContent.innerHTML = `
     <div
@@ -751,29 +1016,43 @@ function openLecture(courseId, index) {
           );
       "
     >
+
       <span class="course-icon">
         ${course.icon}
       </span>
+
     </div>
 
     <span class="section-label">
       ${course.title}
     </span>
 
-    <h2>${lecture.title}</h2>
-
-    <p>${lecture.description}</p>
+    <h2>
+      ${lecture.title}
+    </h2>
 
     <div class="lecture-info">
 
       <div class="panel">
-        <strong>⏱ Duration</strong>
-        <p>${lecture.duration}</p>
+        <strong>
+          ⏱ Duration
+        </strong>
+
+        <p>
+          ${lecture.duration}
+        </p>
       </div>
 
       <div class="panel">
-        <strong>📖 Lesson</strong>
-        <p>${index + 1} of ${course.lectures.length}</p>
+        <strong>
+          📖 Lesson
+        </strong>
+
+        <p>
+          ${index + 1}
+          of
+          ${course.lectures.length}
+        </p>
       </div>
 
     </div>
@@ -784,33 +1063,78 @@ function openLecture(courseId, index) {
         ${course.icon}
       </div>
 
-      <h3>Ready to learn?</h3>
+      <h3>
+        ${lecture.title}
+      </h3>
 
-      <p>
-        This is your ${index + 1}${getOrdinal(index + 1)}
-        lesson in this course.
-        Complete the lesson when you're finished
-        to earn XP and update your progress.
+      <p class="lesson-description">
+        ${lecture.description}
       </p>
+
+      <div class="lesson-section">
+
+        <h4>
+          🎓 What you'll learn
+        </h4>
+
+        <p>
+          ${lecture.description}
+        </p>
+
+      </div>
+
+      <div class="lesson-section">
+
+        <h4>
+          💡 Lesson Goal
+        </h4>
+
+        <p>
+          Take your time to understand
+          the topic before completing
+          this lesson.
+        </p>
+
+      </div>
 
     </div>
 
-    <button
-      type="button"
-      class="button primary-button complete-button"
-      id="completeLectureButton"
-      ${alreadyComplete ? "disabled" : ""}
-    >
-      ${
-        alreadyComplete
-          ? "✓ Lesson Completed"
-          : "Complete Lesson +20 XP"
-      }
-    </button>
+    ${
+      alreadyComplete
+        ? `
+          <button
+            type="button"
+            class="
+              button
+              primary-button
+              complete-button
+            "
+            disabled
+          >
+            ✓ Lesson Completed
+          </button>
+        `
+        : `
+          <button
+            type="button"
+            class="
+              button
+              primary-button
+              complete-button
+            "
+            id="completeLectureButton"
+          >
+            Complete Lesson +20 XP
+          </button>
+        `
+    }
 
     <button
       type="button"
-      class="button secondary-button"
+      class="
+        button
+        secondary-button
+      "
       id="backToCourseButton"
       style="
         width: 100%;
@@ -821,29 +1145,58 @@ function openLecture(courseId, index) {
     </button>
   `;
 
+  /*
+    Make sure the modal stays open.
+  */
+
+  if (courseModal) {
+    courseModal.classList.add("open");
+
+    courseModal.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+  }
+
+  /*
+    ONLY the actual Complete button
+    gets the completion event.
+  */
+
   const completeButton =
     document.getElementById(
       "completeLectureButton"
     );
+
+  if (completeButton) {
+    completeButton.addEventListener(
+      "click",
+      event => {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        completeLecture(
+          courseId,
+          index
+        );
+      }
+    );
+  }
 
   const backButton =
     document.getElementById(
       "backToCourseButton"
     );
 
-  if (completeButton) {
-    completeButton.addEventListener(
-      "click",
-      () => {
-        completeLecture(courseId, index);
-      }
-    );
-  }
-
   if (backButton) {
     backButton.addEventListener(
       "click",
-      () => {
+      event => {
+
+        event.preventDefault();
+        event.stopPropagation();
+
         openCourse(courseId);
       }
     );
@@ -855,13 +1208,34 @@ function openLecture(courseId, index) {
    COMPLETE LECTURE
    ========================================================= */
 
-function completeLecture(courseId, index) {
+function completeLecture(
+  courseId,
+  index
+) {
+  const course =
+    courses.find(
+      item => item.id === courseId
+    );
+
+  if (!course) {
+    return;
+  }
+
   const key =
     `${courseId}-${index}`;
+
+  /*
+    Prevent duplicate XP.
+  */
 
   if (state.completed[key]) {
     return;
   }
+
+  /*
+    THIS is the only place where
+    a lesson becomes completed.
+  */
 
   state.completed[key] = true;
 
@@ -877,11 +1251,16 @@ function completeLecture(courseId, index) {
 
   updateAchievements();
 
-  openCourse(courseId);
-
   showToast(
     "Lesson completed! +20 XP 🎉"
   );
+
+  /*
+    Return to the course list so
+    the new Completed ✓ status is visible.
+  */
+
+  openCourse(courseId);
 }
 
 
@@ -899,16 +1278,28 @@ function getVisibleCourses() {
     categoryFilter?.value || "all";
 
   return courses.filter(course => {
+
     const matchesSearch =
-      course.title.toLowerCase().includes(query) ||
-      course.description.toLowerCase().includes(query) ||
-      course.category.toLowerCase().includes(query);
+      course.title
+        .toLowerCase()
+        .includes(query) ||
+
+      course.description
+        .toLowerCase()
+        .includes(query) ||
+
+      course.category
+        .toLowerCase()
+        .includes(query);
 
     const matchesCategory =
       category === "all" ||
       course.category === category;
 
-    return matchesSearch && matchesCategory;
+    return (
+      matchesSearch &&
+      matchesCategory
+    );
   });
 }
 
@@ -918,24 +1309,47 @@ function getVisibleCourses() {
    ========================================================= */
 
 function updateDashboard() {
-  const level = getLevel();
-  const currentXP = getLevelXP();
-  const completed = getCompletedCount();
-  const total = getTotalLessons();
+  const level =
+    getLevel();
+
+  const currentXP =
+    getLevelXP();
+
+  const completed =
+    getCompletedCount();
+
+  const total =
+    getTotalLessons();
 
   const progress =
     total
-      ? Math.round((completed / total) * 100)
+      ? Math.round(
+          (completed / total) * 100
+        )
       : 0;
 
-  updateXPDisplay(level, currentXP);
-  updateHeroProgress(progress);
-  updateStatisticCards(completed, progress);
+  updateXPDisplay(
+    level,
+    currentXP
+  );
+
+  updateHeroProgress(
+    progress
+  );
+
+  updateStatisticCards(
+    completed,
+    progress
+  );
 }
 
-function updateXPDisplay(level, currentXP) {
+function updateXPDisplay(
+  level,
+  currentXP
+) {
   if (xpBar) {
-    xpBar.style.width = `${currentXP}%`;
+    xpBar.style.width =
+      `${currentXP}%`;
   }
 
   if (xpValue) {
@@ -953,15 +1367,14 @@ function updateXPDisplay(level, currentXP) {
         : `${nextLevelXP} XP until Level ${level + 1}`;
   }
 
-  const levelElements =
-    document.querySelectorAll(
+  document
+    .querySelectorAll(
       ".level-title strong"
-    );
-
-  levelElements.forEach(element => {
-    element.textContent =
-      `Level ${level}`;
-  });
+    )
+    .forEach(element => {
+      element.textContent =
+        `Level ${level}`;
+    });
 }
 
 
@@ -969,7 +1382,9 @@ function updateXPDisplay(level, currentXP) {
    HERO PROGRESS
    ========================================================= */
 
-function updateHeroProgress(progress) {
+function updateHeroProgress(
+  progress
+) {
   if (heroProgress) {
     heroProgress.textContent =
       `${progress}%`;
@@ -978,15 +1393,17 @@ function updateHeroProgress(progress) {
   if (heroProgressCircle) {
     heroProgressCircle.style.background =
       `conic-gradient(
-        var(--cyan) ${progress * 3.6}deg,
-        #1b304a ${progress * 3.6}deg
+        var(--cyan)
+        ${progress * 3.6}deg,
+        #1b304a
+        ${progress * 3.6}deg
       )`;
   }
 }
 
 
 /* =========================================================
-   STAT CARDS
+   STATISTICS
    ========================================================= */
 
 function updateStatisticCards(
@@ -999,17 +1416,25 @@ function updateStatisticCards(
     );
 
   if (cards.length >= 3) {
+
     const first =
-      cards[0].querySelector("strong");
+      cards[0].querySelector(
+        "strong"
+      );
 
     const second =
-      cards[1].querySelector("strong");
+      cards[1].querySelector(
+        "strong"
+      );
 
     const third =
-      cards[2].querySelector("strong");
+      cards[2].querySelector(
+        "strong"
+      );
 
     if (first) {
-      first.textContent = completed;
+      first.textContent =
+        completed;
     }
 
     if (second) {
@@ -1037,60 +1462,76 @@ function getAchievements() {
     {
       icon: "🚀",
       title: "First Step",
-      description: "Complete your first lesson.",
-      unlocked: completed >= 1
+      description:
+        "Complete your first lesson.",
+      unlocked:
+        completed >= 1
     },
 
     {
       icon: "📚",
       title: "Getting Started",
-      description: "Complete 5 lessons.",
-      unlocked: completed >= 5
+      description:
+        "Complete 5 lessons.",
+      unlocked:
+        completed >= 5
     },
 
     {
       icon: "🔥",
       title: "On a Roll",
-      description: "Build a 3-day learning streak.",
-      unlocked: state.streak >= 3
+      description:
+        "Build a 3-day learning streak.",
+      unlocked:
+        state.streak >= 3
     },
 
     {
       icon: "🏆",
       title: "Scholar",
-      description: "Complete 10 lessons.",
-      unlocked: completed >= 10
+      description:
+        "Complete 10 lessons.",
+      unlocked:
+        completed >= 10
     },
 
     {
       icon: "⭐",
       title: "XP Hunter",
-      description: "Earn 100 XP.",
-      unlocked: state.xp >= 100
+      description:
+        "Earn 100 XP.",
+      unlocked:
+        state.xp >= 100
     },
 
     {
       icon: "🎓",
       title: "Course Graduate",
-      description: "Complete an entire course.",
-      unlocked: courses.some(
-        course =>
-          getCourseProgress(course) === 100
-      )
+      description:
+        "Complete an entire course.",
+      unlocked:
+        courses.some(
+          course =>
+            getCourseProgress(course) === 100
+        )
     },
 
     {
       icon: "💎",
       title: "Dedicated Learner",
-      description: "Earn 250 XP.",
-      unlocked: state.xp >= 250
+      description:
+        "Earn 250 XP.",
+      unlocked:
+        state.xp >= 250
     },
 
     {
       icon: "🌟",
       title: "SkillVerse Master",
-      description: "Complete 25 lessons.",
-      unlocked: completed >= 25
+      description:
+        "Complete 25 lessons.",
+      unlocked:
+        completed >= 25
     }
   ];
 }
@@ -1107,42 +1548,48 @@ function updateAchievements() {
 
   grid.innerHTML =
     getAchievements()
-      .map(achievement => `
-        <div
-          class="
-            achievement
-            ${achievement.unlocked ? "" : "locked"}
-          "
-        >
+      .map(
+        achievement => `
+          <div
+            class="
+              achievement
+              ${
+                achievement.unlocked
+                  ? ""
+                  : "locked"
+              }
+            "
+          >
 
-          <div class="badge">
-            ${achievement.icon}
+            <div class="badge">
+              ${achievement.icon}
+            </div>
+
+            <h3>
+              ${achievement.title}
+            </h3>
+
+            <p>
+              ${achievement.description}
+            </p>
+
+            <small>
+              ${
+                achievement.unlocked
+                  ? "✓ Unlocked"
+                  : "🔒 Locked"
+              }
+            </small>
+
           </div>
-
-          <h3>
-            ${achievement.title}
-          </h3>
-
-          <p>
-            ${achievement.description}
-          </p>
-
-          <small>
-            ${
-              achievement.unlocked
-                ? "✓ Unlocked"
-                : "🔒 Locked"
-            }
-          </small>
-
-        </div>
-      `)
+        `
+      )
       .join("");
 }
 
 
 /* =========================================================
-   ORDINAL HELPER
+   ORDINAL
    ========================================================= */
 
 function getOrdinal(number) {
@@ -1157,6 +1604,7 @@ function getOrdinal(number) {
   }
 
   switch (number % 10) {
+
     case 1:
       return "st";
 
@@ -1181,28 +1629,50 @@ function closeModal() {
     return;
   }
 
-  courseModal.classList.remove("open");
-  document.body.style.overflow = "";
+  courseModal.classList.remove(
+    "open"
+  );
+
+  courseModal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.style.overflow =
+    "";
 }
 
 document
-  .querySelectorAll("[data-close]")
+  .querySelectorAll(
+    "[data-close]"
+  )
   .forEach(element => {
+
     element.addEventListener(
       "click",
-      closeModal
+      event => {
+
+        event.preventDefault();
+
+        closeModal();
+      }
     );
+
   });
 
 document.addEventListener(
   "keydown",
   event => {
+
     if (
       event.key === "Escape" &&
-      courseModal?.classList.contains("open")
+      courseModal?.classList.contains(
+        "open"
+      )
     ) {
       closeModal();
     }
+
   }
 );
 
@@ -1211,35 +1681,54 @@ document.addEventListener(
    MOBILE MENU
    ========================================================= */
 
-if (menuButton && mobileMenu) {
+if (
+  menuButton &&
+  mobileMenu
+) {
+
   menuButton.addEventListener(
     "click",
     () => {
-      mobileMenu.classList.toggle("open");
+
+      mobileMenu.classList.toggle(
+        "open"
+      );
 
       menuButton.textContent =
-        mobileMenu.classList.contains("open")
+        mobileMenu.classList.contains(
+          "open"
+        )
           ? "✕"
           : "☰";
+
     }
   );
 }
 
 document
-  .querySelectorAll(".mobile-menu a")
+  .querySelectorAll(
+    ".mobile-menu a"
+  )
   .forEach(link => {
+
     link.addEventListener(
       "click",
       () => {
+
         if (mobileMenu) {
-          mobileMenu.classList.remove("open");
+          mobileMenu.classList.remove(
+            "open"
+          );
         }
 
         if (menuButton) {
-          menuButton.textContent = "☰";
+          menuButton.textContent =
+            "☰";
         }
+
       }
     );
+
   });
 
 
@@ -1248,51 +1737,70 @@ document
    ========================================================= */
 
 document
-  .querySelectorAll('[href="#courses"]')
+  .querySelectorAll(
+    '[href="#courses"]'
+  )
   .forEach(button => {
+
     button.addEventListener(
       "click",
       () => {
-        setTimeout(() => {
-          searchInput?.focus();
-        }, 500);
+
+        setTimeout(
+          () => {
+            searchInput?.focus();
+          },
+          500
+        );
+
       }
     );
+
   });
 
-
-/* FIXED HERO PLAY BUTTON */
-
 if (heroPlayButton) {
+
   heroPlayButton.addEventListener(
     "click",
-    () => {
-      const firstCourse = courses[0];
+    event => {
+
+      event.preventDefault();
+
+      const firstCourse =
+        courses[0];
 
       if (firstCourse) {
-        openCourse(firstCourse.id);
+        openCourse(
+          firstCourse.id
+        );
       }
+
     }
   );
+
 }
 
 
 /* =========================================================
-   SEARCH EVENTS
+   SEARCH
    ========================================================= */
 
 if (searchInput) {
+
   searchInput.addEventListener(
     "input",
     filterCourses
   );
+
 }
 
 if (categoryFilter) {
+
   categoryFilter.addEventListener(
     "change",
     filterCourses
   );
+
 }
 
 
@@ -1302,21 +1810,35 @@ if (categoryFilter) {
 
 let toastTimer;
 
-function showToast(message) {
+function showToast(
+  message
+) {
   if (!toast) {
     return;
   }
 
-  toast.textContent = message;
+  toast.textContent =
+    message;
 
-  toast.classList.add("show");
+  toast.classList.add(
+    "show"
+  );
 
-  clearTimeout(toastTimer);
+  clearTimeout(
+    toastTimer
+  );
 
   toastTimer =
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 2500);
+    setTimeout(
+      () => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      2500
+    );
 }
 
 
@@ -1325,9 +1847,12 @@ function showToast(message) {
    ========================================================= */
 
 const extraStyles =
-  document.createElement("style");
+  document.createElement(
+    "style"
+  );
 
 extraStyles.textContent = `
+
   .empty-state {
     grid-column: 1 / -1;
     padding: 55px 25px;
@@ -1356,7 +1881,7 @@ extraStyles.textContent = `
     margin-top: 15px;
     border: 1px solid var(--border);
     border-radius: 14px;
-    background: rgba(255, 255, 255, 0.025);
+    background: rgba(255,255,255,0.025);
   }
 
   .panel strong {
@@ -1390,8 +1915,8 @@ extraStyles.textContent = `
     background:
       linear-gradient(
         145deg,
-        rgba(109, 93, 252, 0.08),
-        rgba(49, 213, 255, 0.04)
+        rgba(109,93,252,0.08),
+        rgba(49,213,255,0.04)
       );
   }
 
@@ -1401,13 +1926,33 @@ extraStyles.textContent = `
   }
 
   .lesson-content h3 {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
-  .lesson-content p {
-    max-width: 480px;
-    margin: auto;
+  .lesson-description {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    line-height: 1.7;
+  }
+
+  .lesson-section {
+    max-width: 600px;
+    margin: 15px auto 0;
+    padding: 15px;
+    text-align: left;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.025);
+  }
+
+  .lesson-section h4 {
+    margin: 0 0 6px;
+  }
+
+  .lesson-section p {
+    margin: 0;
     font-size: 13px;
+    line-height: 1.6;
   }
 
   .complete-button:disabled {
@@ -1441,6 +1986,7 @@ extraStyles.textContent = `
   }
 
   @media (max-width: 500px) {
+
     .lecture-info {
       grid-template-columns: 1fr;
     }
@@ -1452,10 +1998,14 @@ extraStyles.textContent = `
     .lecture-button {
       width: 100%;
     }
+
   }
+
 `;
 
-document.head.appendChild(extraStyles);
+document.head.appendChild(
+  extraStyles
+);
 
 
 /* =========================================================
@@ -1482,3 +2032,4 @@ saveState();
 console.log(
   "SkillVerse v1.2 loaded successfully 🚀"
 );
+```
