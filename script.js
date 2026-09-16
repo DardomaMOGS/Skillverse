@@ -1,3 +1,4 @@
+
 /* =========================================================
    SKILLVERSE v1.2
    Main JavaScript
@@ -18,37 +19,31 @@ const courses = [
     lessons: 5,
     color1: "#6d5dfc",
     color2: "#31d5ff",
-
     lectures: [
       {
         title: "Welcome to Roblox Development",
         duration: "8 min",
-        description:
-          "Learn what Roblox Studio is and how game development works on Roblox."
+        description: "Learn what Roblox Studio is and how game development works on Roblox."
       },
       {
         title: "Exploring Roblox Studio",
         duration: "11 min",
-        description:
-          "Get familiar with the Explorer, Properties, Toolbox, and workspace."
+        description: "Get familiar with the Explorer, Properties, Toolbox, and workspace."
       },
       {
         title: "Building Your First Map",
         duration: "14 min",
-        description:
-          "Learn the basics of placing and organizing objects in your world."
+        description: "Learn the basics of placing and organizing objects in your world."
       },
       {
         title: "Introduction to Lua",
         duration: "16 min",
-        description:
-          "Understand the basics of scripting with Lua in Roblox Studio."
+        description: "Understand the basics of scripting with Lua in Roblox Studio."
       },
       {
         title: "Your First Game Mechanic",
         duration: "18 min",
-        description:
-          "Put your new skills together and create a simple interactive mechanic."
+        description: "Put your new skills together and create a simple interactive mechanic."
       }
     ]
   },
@@ -63,37 +58,31 @@ const courses = [
     lessons: 5,
     color1: "#3478f6",
     color2: "#42d9c8",
-
     lectures: [
       {
         title: "What Is Programming?",
         duration: "7 min",
-        description:
-          "Discover what programming is and how computers follow instructions."
+        description: "Discover what programming is and how computers follow instructions."
       },
       {
         title: "Variables",
         duration: "10 min",
-        description:
-          "Learn how variables store and organize information."
+        description: "Learn how variables store and organize information."
       },
       {
         title: "Conditions",
         duration: "12 min",
-        description:
-          "Learn how programs make decisions using conditions."
+        description: "Learn how programs make decisions using conditions."
       },
       {
         title: "Loops",
         duration: "13 min",
-        description:
-          "Understand how loops can repeat actions efficiently."
+        description: "Understand how loops can repeat actions efficiently."
       },
       {
         title: "Putting It Together",
         duration: "15 min",
-        description:
-          "Use several programming concepts together in a small project."
+        description: "Use several programming concepts together in a small project."
       }
     ]
   },
@@ -108,37 +97,31 @@ const courses = [
     lessons: 5,
     color1: "#ff5ca8",
     color2: "#845dfc",
-
     lectures: [
       {
         title: "Introduction to Design",
         duration: "8 min",
-        description:
-          "Learn what makes a digital design clear, useful, and attractive."
+        description: "Learn what makes a digital design clear, useful, and attractive."
       },
       {
         title: "Color Theory",
         duration: "12 min",
-        description:
-          "Understand colors, contrast, and how colors work together."
+        description: "Understand colors, contrast, and how colors work together."
       },
       {
         title: "Typography",
         duration: "10 min",
-        description:
-          "Learn how fonts and text choices affect a design."
+        description: "Learn how fonts and text choices affect a design."
       },
       {
         title: "Layouts",
         duration: "14 min",
-        description:
-          "Discover how to organize information using strong layouts."
+        description: "Discover how to organize information using strong layouts."
       },
       {
         title: "Create a Design",
         duration: "17 min",
-        description:
-          "Combine the principles you've learned into a complete design."
+        description: "Combine the principles you've learned into a complete design."
       }
     ]
   },
@@ -153,37 +136,31 @@ const courses = [
     lessons: 5,
     color1: "#ff7b54",
     color2: "#ffca3a",
-
     lectures: [
       {
         title: "Video Editing Basics",
         duration: "9 min",
-        description:
-          "Understand the basic workflow behind editing a video."
+        description: "Understand the basic workflow behind editing a video."
       },
       {
         title: "Cutting and Trimming",
         duration: "11 min",
-        description:
-          "Learn how to remove unwanted sections and improve pacing."
+        description: "Learn how to remove unwanted sections and improve pacing."
       },
       {
         title: "Transitions",
         duration: "9 min",
-        description:
-          "Learn when and how to use transitions effectively."
+        description: "Learn when and how to use transitions effectively."
       },
       {
         title: "Audio",
         duration: "13 min",
-        description:
-          "Understand music, sound effects, and basic audio balancing."
+        description: "Understand music, sound effects, and basic audio balancing."
       },
       {
         title: "Exporting Your Video",
         duration: "8 min",
-        description:
-          "Learn the important settings to consider when exporting a finished video."
+        description: "Learn the important settings to consider when exporting a finished video."
       }
     ]
   },
@@ -198,37 +175,31 @@ const courses = [
     lessons: 5,
     color1: "#00b894",
     color2: "#00cec9",
-
     lectures: [
       {
         title: "What Is AI?",
         duration: "8 min",
-        description:
-          "Learn what artificial intelligence means and where it is used."
+        description: "Learn what artificial intelligence means and where it is used."
       },
       {
         title: "Machine Learning",
         duration: "12 min",
-        description:
-          "Understand the basic idea behind machine learning."
+        description: "Understand the basic idea behind machine learning."
       },
       {
         title: "AI and Data",
         duration: "10 min",
-        description:
-          "Learn why data is important to modern AI systems."
+        description: "Learn why data is important to modern AI systems."
       },
       {
         title: "Generative AI",
         duration: "13 min",
-        description:
-          "Explore how AI systems can generate text, images, and other content."
+        description: "Explore how AI systems can generate text, images, and other content."
       },
       {
         title: "Using AI Responsibly",
         duration: "10 min",
-        description:
-          "Learn important principles for using AI thoughtfully and responsibly."
+        description: "Learn important principles for using AI thoughtfully and responsibly."
       }
     ]
   },
@@ -243,42 +214,35 @@ const courses = [
     lessons: 5,
     color1: "#3498db",
     color2: "#9b59b6",
-
     lectures: [
       {
         title: "How Science Works",
         duration: "8 min",
-        description:
-          "Learn about observation, questions, experiments, and evidence."
+        description: "Learn about observation, questions, experiments, and evidence."
       },
       {
         title: "Our Planet",
         duration: "11 min",
-        description:
-          "Explore some of the systems that make Earth unique."
+        description: "Explore some of the systems that make Earth unique."
       },
       {
         title: "Space",
         duration: "14 min",
-        description:
-          "Take a quick journey through our solar system and beyond."
+        description: "Take a quick journey through our solar system and beyond."
       },
       {
         title: "Energy",
         duration: "12 min",
-        description:
-          "Understand different forms of energy and how they interact."
+        description: "Understand different forms of energy and how they interact."
       },
       {
         title: "The Scientific Mindset",
         duration: "9 min",
-        description:
-          "Learn how curiosity and evidence can help us understand the world."
+        description: "Learn how curiosity and evidence can help us understand the world."
       }
     ]
   }
 ];
-
 
 /* =========================================================
    STORAGE
@@ -320,40 +284,45 @@ function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
-
 /* =========================================================
    DOM ELEMENTS
    ========================================================= */
 
-const courseGrid = document.getElementById("courseGrid");
-const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
-const courseModal = document.getElementById("courseModal");
-const modalContent = document.getElementById("modalContent");
-const toast = document.getElementById("toast");
-const menuButton = document.getElementById("menuButton");
-const mobileMenu = document.getElementById("mobileMenu");
+let courseGrid;
+let searchInput;
+let categoryFilter;
+let courseModal;
+let modalContent;
+let toast;
+let menuButton;
+let mobileMenu;
+let xpBar;
+let xpValue;
+let xpNext;
+let heroProgress;
+let heroProgressCircle;
+let heroPlayButton;
 
-const xpBar = document.getElementById("xpBar");
-const xpValue = document.getElementById("xpValue");
-const xpNext = document.getElementById("xpNext");
-
-const heroProgress = document.getElementById("heroProgress");
-const heroProgressCircle =
-  document.getElementById("heroProgressCircle");
-
-/* FIXED: this was missing */
-const heroPlayButton =
-  document.getElementById("heroPlayButton");
-
+function getElements() {
+  courseGrid = document.getElementById("courseGrid");
+  searchInput = document.getElementById("searchInput");
+  categoryFilter = document.getElementById("categoryFilter");
+  courseModal = document.getElementById("courseModal");
+  modalContent = document.getElementById("modalContent");
+  toast = document.getElementById("toast");
+  menuButton = document.getElementById("menuButton");
+  mobileMenu = document.getElementById("mobileMenu");
+  xpBar = document.getElementById("xpBar");
+  xpValue = document.getElementById("xpValue");
+  xpNext = document.getElementById("xpNext");
+  heroProgress = document.getElementById("heroProgress");
+  heroProgressCircle = document.getElementById("heroProgressCircle");
+  heroPlayButton = document.getElementById("heroPlayButton");
+}
 
 /* =========================================================
    HELPERS
    ========================================================= */
-
-function getAllLectures() {
-  return courses.flatMap(course => course.lectures);
-}
 
 function getTotalLessons() {
   return courses.reduce(
@@ -363,16 +332,13 @@ function getTotalLessons() {
 }
 
 function getCompletedCount() {
-  return Object.values(state.completed)
-    .filter(Boolean)
-    .length;
+  return Object.values(state.completed).filter(Boolean).length;
 }
 
 function getCourseCompletedCount(course) {
-  return course.lectures.filter(
-    (_, index) =>
-      Boolean(state.completed[`${course.id}-${index}`])
-  ).length;
+  return course.lectures.filter((lecture, index) => {
+    return Boolean(state.completed[`${course.id}-${index}`]);
+  }).length;
 }
 
 function getCourseProgress(course) {
@@ -381,9 +347,7 @@ function getCourseProgress(course) {
   }
 
   return Math.round(
-    (getCourseCompletedCount(course) /
-      course.lectures.length) *
-      100
+    (getCourseCompletedCount(course) / course.lectures.length) * 100
   );
 }
 
@@ -407,7 +371,6 @@ function getTodayKey() {
 
 function getYesterdayKey() {
   const date = new Date();
-
   date.setDate(date.getDate() - 1);
 
   return [
@@ -417,9 +380,27 @@ function getYesterdayKey() {
   ].join("-");
 }
 
+function getOrdinal(number) {
+  const mod100 = number % 100;
+
+  if (mod100 >= 11 && mod100 <= 13) {
+    return "th";
+  }
+
+  switch (number % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
+}
 
 /* =========================================================
-   STREAK
+   STREAK AND XP
    ========================================================= */
 
 function updateStreak() {
@@ -457,18 +438,12 @@ function registerStudyActivity() {
   state.lastStudyDate = today;
 }
 
-
-/* =========================================================
-   XP
-   ========================================================= */
-
 function addXP(amount) {
   state.xp += amount;
   registerStudyActivity();
   saveState();
   updateDashboard();
 }
-
 
 /* =========================================================
    COURSE FILTER
@@ -479,48 +454,36 @@ function setupCategories() {
     return;
   }
 
-  const categories = [
-    ...new Set(
-      courses.map(course => course.category)
-    )
-  ];
+  const categories = [...new Set(courses.map(course => course.category))];
 
   categoryFilter.innerHTML = `
     <option value="all">All categories</option>
     ${categories
-      .map(
-        category =>
-          `<option value="${category}">${category}</option>`
-      )
+      .map(category => `<option value="${category}">${category}</option>`)
       .join("")}
   `;
 }
 
-function filterCourses() {
-  const query =
-    searchInput?.value
-      .trim()
-      .toLowerCase() || "";
+function getVisibleCourses() {
+  const query = searchInput?.value.trim().toLowerCase() || "";
+  const category = categoryFilter?.value || "all";
 
-  const category =
-    categoryFilter?.value || "all";
-
-  const filtered = courses.filter(course => {
+  return courses.filter(course => {
     const matchesSearch =
       course.title.toLowerCase().includes(query) ||
       course.description.toLowerCase().includes(query) ||
       course.category.toLowerCase().includes(query);
 
     const matchesCategory =
-      category === "all" ||
-      course.category === category;
+      category === "all" || course.category === category;
 
     return matchesSearch && matchesCategory;
   });
-
-  renderCourses(filtered);
 }
 
+function filterCourses() {
+  renderCourses(getVisibleCourses());
+}
 
 /* =========================================================
    COURSE CARDS
@@ -528,6 +491,7 @@ function filterCourses() {
 
 function renderCourses(list = courses) {
   if (!courseGrid) {
+    console.error("SkillVerse: #courseGrid was not found.");
     return;
   }
 
@@ -536,9 +500,7 @@ function renderCourses(list = courses) {
       <div class="empty-state">
         <div class="empty-icon">🔎</div>
         <h3>No courses found</h3>
-        <p>
-          Try another search or choose a different category.
-        </p>
+        <p>Try another search or choose a different category.</p>
       </div>
     `;
 
@@ -554,16 +516,13 @@ function renderCourses(list = courses) {
         <article
           class="course-card"
           data-course-id="${course.id}"
-          style="
-            --cover1: ${course.color1};
-            --cover2: ${course.color2};
-          "
+          style="--cover1: ${course.color1}; --cover2: ${course.color2};"
+          tabindex="0"
+          role="button"
+          aria-label="Open ${course.title}"
         >
           <div class="course-cover">
-            <span class="course-icon">
-              ${course.icon}
-            </span>
-
+            <span class="course-icon">${course.icon}</span>
             <span class="course-badge">
               ${completed ? "Completed ✓" : course.level}
             </span>
@@ -571,7 +530,6 @@ function renderCourses(list = courses) {
 
           <div class="course-body">
             <h3>${course.title}</h3>
-
             <p>${course.description}</p>
 
             <div class="meta">
@@ -589,54 +547,43 @@ function renderCourses(list = courses) {
     })
     .join("");
 
-  document
-    .querySelectorAll(".course-card")
-    .forEach(card => {
-      card.addEventListener("click", () => {
-        openCourse(card.dataset.courseId);
-      });
-    });
-}
+  courseGrid.querySelectorAll(".course-card").forEach(card => {
+    const open = () => openCourse(card.dataset.courseId);
 
+    card.addEventListener("click", open);
+
+    card.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        open();
+      }
+    });
+  });
+}
 
 /* =========================================================
    COURSE MODAL
    ========================================================= */
 
 function openCourse(courseId) {
-  const course =
-    courses.find(item => item.id === courseId);
+  const course = courses.find(item => item.id === courseId);
 
   if (!course || !courseModal || !modalContent) {
     return;
   }
 
-  const progress =
-    getCourseProgress(course);
+  const progress = getCourseProgress(course);
 
   modalContent.innerHTML = `
     <div
       class="modal-cover"
-      style="
-        background:
-          linear-gradient(
-            135deg,
-            ${course.color1},
-            ${course.color2}
-          );
-      "
+      style="background: linear-gradient(135deg, ${course.color1}, ${course.color2});"
     >
-      <span class="course-icon">
-        ${course.icon}
-      </span>
+      <span class="course-icon">${course.icon}</span>
     </div>
 
-    <span class="section-label">
-      ${course.category}
-    </span>
-
+    <span class="section-label">${course.category}</span>
     <h2>${course.title}</h2>
-
     <p>${course.description}</p>
 
     <div class="meta" style="margin-top: 12px;">
@@ -650,7 +597,6 @@ function openCourse(courseId) {
     </div>
 
     <div class="lecture-list">
-
       ${course.lectures
         .map((lecture, index) => {
           const key = `${course.id}-${index}`;
@@ -658,10 +604,7 @@ function openCourse(courseId) {
 
           return `
             <div class="lecture-row ${done ? "done" : ""}">
-
-              <span class="num">
-                ${done ? "✓" : index + 1}
-              </span>
+              <span class="num">${done ? "✓" : index + 1}</span>
 
               <div>
                 <b>${lecture.title}</b>
@@ -676,17 +619,14 @@ function openCourse(courseId) {
               >
                 ${done ? "Review" : "Learn"}
               </button>
-
             </div>
           `;
         })
         .join("")}
-
     </div>
 
     <div class="panel">
       <strong>Your progress</strong>
-
       <p>
         ${getCourseCompletedCount(course)}
         of
@@ -697,75 +637,55 @@ function openCourse(courseId) {
   `;
 
   courseModal.classList.add("open");
+  courseModal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 
-  document
-    .querySelectorAll(".lecture-button")
-    .forEach(button => {
-      button.addEventListener("click", event => {
-        event.stopPropagation();
+  modalContent.querySelectorAll(".lecture-button").forEach(button => {
+    button.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
 
-        openLecture(
-          button.dataset.course,
-          Number(button.dataset.index)
-        );
-      });
+      const selectedCourseId = button.dataset.course;
+      const selectedIndex = Number(button.dataset.index);
+
+      openLecture(selectedCourseId, selectedIndex);
     });
+  });
 }
-
 
 /* =========================================================
    LECTURE VIEWER
    ========================================================= */
 
 function openLecture(courseId, index) {
-  const course =
-    courses.find(item => item.id === courseId);
+  const course = courses.find(item => item.id === courseId);
 
-  if (!course) {
+  if (!course || !modalContent) {
     return;
   }
 
-  const lecture =
-    course.lectures[index];
+  const lecture = course.lectures[index];
 
-  if (!lecture || !modalContent) {
+  if (!lecture) {
     return;
   }
 
-  const key =
-    `${course.id}-${index}`;
-
-  const alreadyComplete =
-    Boolean(state.completed[key]);
+  const key = `${course.id}-${index}`;
+  const alreadyComplete = Boolean(state.completed[key]);
 
   modalContent.innerHTML = `
     <div
       class="modal-cover"
-      style="
-        background:
-          linear-gradient(
-            135deg,
-            ${course.color1},
-            ${course.color2}
-          );
-      "
+      style="background: linear-gradient(135deg, ${course.color1}, ${course.color2});"
     >
-      <span class="course-icon">
-        ${course.icon}
-      </span>
+      <span class="course-icon">${course.icon}</span>
     </div>
 
-    <span class="section-label">
-      ${course.title}
-    </span>
-
+    <span class="section-label">${course.title}</span>
     <h2>${lecture.title}</h2>
-
     <p>${lecture.description}</p>
 
     <div class="lecture-info">
-
       <div class="panel">
         <strong>⏱ Duration</strong>
         <p>${lecture.duration}</p>
@@ -775,24 +695,15 @@ function openLecture(courseId, index) {
         <strong>📖 Lesson</strong>
         <p>${index + 1} of ${course.lectures.length}</p>
       </div>
-
     </div>
 
     <div class="lesson-content">
-
-      <div class="lesson-icon">
-        ${course.icon}
-      </div>
-
+      <div class="lesson-icon">${course.icon}</div>
       <h3>Ready to learn?</h3>
-
       <p>
-        This is your ${index + 1}${getOrdinal(index + 1)}
-        lesson in this course.
-        Complete the lesson when you're finished
-        to earn XP and update your progress.
+        This is your ${index + 1}${getOrdinal(index + 1)} lesson in this course.
+        Complete the lesson when you're finished to earn XP and update your progress.
       </p>
-
     </div>
 
     <button
@@ -801,117 +712,61 @@ function openLecture(courseId, index) {
       id="completeLectureButton"
       ${alreadyComplete ? "disabled" : ""}
     >
-      ${
-        alreadyComplete
-          ? "✓ Lesson Completed"
-          : "Complete Lesson +20 XP"
-      }
+      ${alreadyComplete ? "✓ Lesson Completed" : "Complete Lesson +20 XP"}
     </button>
 
     <button
       type="button"
       class="button secondary-button"
       id="backToCourseButton"
-      style="
-        width: 100%;
-        margin-top: 10px;
-      "
+      style="width: 100%; margin-top: 10px;"
     >
       ← Back to Course
     </button>
   `;
 
-  const completeButton =
-    document.getElementById(
-      "completeLectureButton"
-    );
+  const completeButton = document.getElementById("completeLectureButton");
+  const backButton = document.getElementById("backToCourseButton");
 
-  const backButton =
-    document.getElementById(
-      "backToCourseButton"
-    );
-
-  if (completeButton) {
-    completeButton.addEventListener(
-      "click",
-      () => {
-        completeLecture(courseId, index);
-      }
-    );
+  if (completeButton && !alreadyComplete) {
+    completeButton.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
+      completeLecture(courseId, index);
+    });
   }
 
   if (backButton) {
-    backButton.addEventListener(
-      "click",
-      () => {
-        openCourse(courseId);
-      }
-    );
+    backButton.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
+      openCourse(courseId);
+    });
   }
 }
-
 
 /* =========================================================
    COMPLETE LECTURE
    ========================================================= */
 
 function completeLecture(courseId, index) {
-  const key =
-    `${courseId}-${index}`;
+  const key = `${courseId}-${index}`;
 
   if (state.completed[key]) {
     return;
   }
 
   state.completed[key] = true;
-
   addXP(20);
-
   saveState();
 
-  renderCourses(
-    getVisibleCourses()
-  );
-
+  renderCourses(getVisibleCourses());
   updateDashboard();
-
   updateAchievements();
-
   openCourse(courseId);
 
-  showToast(
-    "Lesson completed! +20 XP 🎉"
-  );
+  showToast("Lesson completed! +20 XP 🎉");
 }
-
-
-/* =========================================================
-   VISIBLE COURSES
-   ========================================================= */
-
-function getVisibleCourses() {
-  const query =
-    searchInput?.value
-      .trim()
-      .toLowerCase() || "";
-
-  const category =
-    categoryFilter?.value || "all";
-
-  return courses.filter(course => {
-    const matchesSearch =
-      course.title.toLowerCase().includes(query) ||
-      course.description.toLowerCase().includes(query) ||
-      course.category.toLowerCase().includes(query);
-
-    const matchesCategory =
-      category === "all" ||
-      course.category === category;
-
-    return matchesSearch && matchesCategory;
-  });
-}
-
 
 /* =========================================================
    DASHBOARD
@@ -923,10 +778,9 @@ function updateDashboard() {
   const completed = getCompletedCount();
   const total = getTotalLessons();
 
-  const progress =
-    total
-      ? Math.round((completed / total) * 100)
-      : 0;
+  const progress = total
+    ? Math.round((completed / total) * 100)
+    : 0;
 
   updateXPDisplay(level, currentXP);
   updateHeroProgress(progress);
@@ -939,13 +793,11 @@ function updateXPDisplay(level, currentXP) {
   }
 
   if (xpValue) {
-    xpValue.textContent =
-      `${state.xp} XP`;
+    xpValue.textContent = `${state.xp} XP`;
   }
 
   if (xpNext) {
-    const nextLevelXP =
-      100 - currentXP;
+    const nextLevelXP = 100 - currentXP;
 
     xpNext.textContent =
       currentXP === 0
@@ -953,85 +805,46 @@ function updateXPDisplay(level, currentXP) {
         : `${nextLevelXP} XP until Level ${level + 1}`;
   }
 
-  const levelElements =
-    document.querySelectorAll(
-      ".level-title strong"
-    );
-
-  levelElements.forEach(element => {
-    element.textContent =
-      `Level ${level}`;
+  document.querySelectorAll(".level-title strong").forEach(element => {
+    element.textContent = `Level ${level}`;
   });
 }
 
-
-/* =========================================================
-   HERO PROGRESS
-   ========================================================= */
-
 function updateHeroProgress(progress) {
   if (heroProgress) {
-    heroProgress.textContent =
-      `${progress}%`;
+    heroProgress.textContent = `${progress}%`;
   }
 
   if (heroProgressCircle) {
-    heroProgressCircle.style.background =
-      `conic-gradient(
+    heroProgressCircle.style.background = `
+      conic-gradient(
         var(--cyan) ${progress * 3.6}deg,
         #1b304a ${progress * 3.6}deg
-      )`;
+      )
+    `;
   }
 }
 
-
-/* =========================================================
-   STAT CARDS
-   ========================================================= */
-
-function updateStatisticCards(
-  completed,
-  progress
-) {
-  const cards =
-    document.querySelectorAll(
-      ".statistic-card"
-    );
+function updateStatisticCards(completed, progress) {
+  const cards = document.querySelectorAll(".statistic-card");
 
   if (cards.length >= 3) {
-    const first =
-      cards[0].querySelector("strong");
+    const first = cards[0].querySelector("strong");
+    const second = cards[1].querySelector("strong");
+    const third = cards[2].querySelector("strong");
 
-    const second =
-      cards[1].querySelector("strong");
-
-    const third =
-      cards[2].querySelector("strong");
-
-    if (first) {
-      first.textContent = completed;
-    }
-
-    if (second) {
-      second.textContent =
-        `${progress}%`;
-    }
-
-    if (third) {
-      third.textContent =
-        state.streak;
-    }
+    if (first) first.textContent = completed;
+    if (second) second.textContent = `${progress}%`;
+    if (third) third.textContent = state.streak;
   }
 }
-
 
 /* =========================================================
    ACHIEVEMENTS
    ========================================================= */
 
 function getAchievements() {
-  const completed =
-    getCompletedCount();
+  const completed = getCompletedCount();
 
   return [
     {
@@ -1040,52 +853,42 @@ function getAchievements() {
       description: "Complete your first lesson.",
       unlocked: completed >= 1
     },
-
     {
       icon: "📚",
       title: "Getting Started",
       description: "Complete 5 lessons.",
       unlocked: completed >= 5
     },
-
     {
       icon: "🔥",
       title: "On a Roll",
       description: "Build a 3-day learning streak.",
       unlocked: state.streak >= 3
     },
-
     {
       icon: "🏆",
       title: "Scholar",
       description: "Complete 10 lessons.",
       unlocked: completed >= 10
     },
-
     {
       icon: "⭐",
       title: "XP Hunter",
       description: "Earn 100 XP.",
       unlocked: state.xp >= 100
     },
-
     {
       icon: "🎓",
       title: "Course Graduate",
       description: "Complete an entire course.",
-      unlocked: courses.some(
-        course =>
-          getCourseProgress(course) === 100
-      )
+      unlocked: courses.some(course => getCourseProgress(course) === 100)
     },
-
     {
       icon: "💎",
       title: "Dedicated Learner",
       description: "Earn 250 XP.",
       unlocked: state.xp >= 250
     },
-
     {
       icon: "🌟",
       title: "SkillVerse Master",
@@ -1096,81 +899,27 @@ function getAchievements() {
 }
 
 function updateAchievements() {
-  const grid =
-    document.getElementById(
-      "achievementGrid"
-    );
+  const grid = document.getElementById("achievementGrid");
 
   if (!grid) {
     return;
   }
 
-  grid.innerHTML =
-    getAchievements()
-      .map(achievement => `
-        <div
-          class="
-            achievement
-            ${achievement.unlocked ? "" : "locked"}
-          "
-        >
-
-          <div class="badge">
-            ${achievement.icon}
-          </div>
-
-          <h3>
-            ${achievement.title}
-          </h3>
-
-          <p>
-            ${achievement.description}
-          </p>
-
+  grid.innerHTML = getAchievements()
+    .map(achievement => {
+      return `
+        <div class="achievement ${achievement.unlocked ? "" : "locked"}">
+          <div class="badge">${achievement.icon}</div>
+          <h3>${achievement.title}</h3>
+          <p>${achievement.description}</p>
           <small>
-            ${
-              achievement.unlocked
-                ? "✓ Unlocked"
-                : "🔒 Locked"
-            }
+            ${achievement.unlocked ? "✓ Unlocked" : "🔒 Locked"}
           </small>
-
         </div>
-      `)
-      .join("");
+      `;
+    })
+    .join("");
 }
-
-
-/* =========================================================
-   ORDINAL HELPER
-   ========================================================= */
-
-function getOrdinal(number) {
-  const mod100 =
-    number % 100;
-
-  if (
-    mod100 >= 11 &&
-    mod100 <= 13
-  ) {
-    return "th";
-  }
-
-  switch (number % 10) {
-    case 1:
-      return "st";
-
-    case 2:
-      return "nd";
-
-    case 3:
-      return "rd";
-
-    default:
-      return "th";
-  }
-}
-
 
 /* =========================================================
    MODAL CONTROLS
@@ -1182,119 +931,59 @@ function closeModal() {
   }
 
   courseModal.classList.remove("open");
+  courseModal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
-
-document
-  .querySelectorAll("[data-close]")
-  .forEach(element => {
-    element.addEventListener(
-      "click",
-      closeModal
-    );
-  });
-
-document.addEventListener(
-  "keydown",
-  event => {
-    if (
-      event.key === "Escape" &&
-      courseModal?.classList.contains("open")
-    ) {
-      closeModal();
-    }
-  }
-);
-
 
 /* =========================================================
    MOBILE MENU
    ========================================================= */
 
-if (menuButton && mobileMenu) {
-  menuButton.addEventListener(
-    "click",
-    () => {
+function setupMobileMenu() {
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener("click", () => {
       mobileMenu.classList.toggle("open");
 
-      menuButton.textContent =
-        mobileMenu.classList.contains("open")
-          ? "✕"
-          : "☰";
-    }
-  );
-}
+      menuButton.textContent = mobileMenu.classList.contains("open")
+        ? "✕"
+        : "☰";
+    });
+  }
 
-document
-  .querySelectorAll(".mobile-menu a")
-  .forEach(link => {
-    link.addEventListener(
-      "click",
-      () => {
-        if (mobileMenu) {
-          mobileMenu.classList.remove("open");
-        }
+  document.querySelectorAll(".mobile-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.remove("open");
 
-        if (menuButton) {
-          menuButton.textContent = "☰";
-        }
+      if (menuButton) {
+        menuButton.textContent = "☰";
       }
-    );
+    });
   });
-
+}
 
 /* =========================================================
    HERO BUTTONS
    ========================================================= */
 
-document
-  .querySelectorAll('[href="#courses"]')
-  .forEach(button => {
-    button.addEventListener(
-      "click",
-      () => {
-        setTimeout(() => {
-          searchInput?.focus();
-        }, 500);
-      }
-    );
+function setupHeroButtons() {
+  document.querySelectorAll('[href="#courses"]').forEach(button => {
+    button.addEventListener("click", () => {
+      setTimeout(() => {
+        searchInput?.focus();
+      }, 500);
+    });
   });
 
-
-/* FIXED HERO PLAY BUTTON */
-
-if (heroPlayButton) {
-  heroPlayButton.addEventListener(
-    "click",
-    () => {
+  if (heroPlayButton) {
+    heroPlayButton.addEventListener("click", () => {
       const firstCourse = courses[0];
 
       if (firstCourse) {
         openCourse(firstCourse.id);
       }
-    }
-  );
+    });
+  }
 }
-
-
-/* =========================================================
-   SEARCH EVENTS
-   ========================================================= */
-
-if (searchInput) {
-  searchInput.addEventListener(
-    "input",
-    filterCourses
-  );
-}
-
-if (categoryFilter) {
-  categoryFilter.addEventListener(
-    "change",
-    filterCourses
-  );
-}
-
 
 /* =========================================================
    TOAST
@@ -1308,177 +997,196 @@ function showToast(message) {
   }
 
   toast.textContent = message;
-
   toast.classList.add("show");
 
   clearTimeout(toastTimer);
 
-  toastTimer =
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 2500);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
 }
-
 
 /* =========================================================
    EXTRA STYLES
    ========================================================= */
 
-const extraStyles =
-  document.createElement("style");
+function addExtraStyles() {
+  const extraStyles = document.createElement("style");
 
-extraStyles.textContent = `
-  .empty-state {
-    grid-column: 1 / -1;
-    padding: 55px 25px;
-    text-align: center;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    background: var(--card);
-  }
+  extraStyles.textContent = `
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 55px 25px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card);
+    }
 
-  .empty-icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-  }
+    .empty-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
 
-  .empty-state h3 {
-    margin-bottom: 5px;
-  }
+    .empty-state h3 {
+      margin-bottom: 5px;
+    }
 
-  .empty-state p {
-    color: var(--muted);
-    font-size: 13px;
-  }
+    .empty-state p {
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-  .panel {
-    padding: 16px;
-    margin-top: 15px;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.025);
-  }
+    .panel {
+      padding: 16px;
+      margin-top: 15px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.025);
+    }
 
-  .panel strong {
-    display: block;
-    margin-bottom: 4px;
-  }
+    .panel strong {
+      display: block;
+      margin-bottom: 4px;
+    }
 
-  .panel p {
-    margin: 0;
-    font-size: 12px;
-    color: var(--muted);
-  }
+    .panel p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
 
-  .lecture-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 20px;
-  }
+    .lecture-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 20px;
+    }
 
-  .lecture-info .panel {
-    margin: 0;
-  }
+    .lecture-info .panel {
+      margin: 0;
+    }
 
-  .lesson-content {
-    margin-top: 20px;
-    padding: 25px;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    text-align: center;
-    background:
-      linear-gradient(
+    .lesson-content {
+      margin-top: 20px;
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      text-align: center;
+      background: linear-gradient(
         145deg,
         rgba(109, 93, 252, 0.08),
         rgba(49, 213, 255, 0.04)
       );
-  }
+    }
 
-  .lesson-icon {
-    font-size: 55px;
-    margin-bottom: 10px;
-  }
+    .lesson-icon {
+      font-size: 55px;
+      margin-bottom: 10px;
+    }
 
-  .lesson-content h3 {
-    margin-bottom: 5px;
-  }
+    .lesson-content h3 {
+      margin-bottom: 5px;
+    }
 
-  .lesson-content p {
-    max-width: 480px;
-    margin: auto;
-    font-size: 13px;
-  }
+    .lesson-content p {
+      max-width: 480px;
+      margin: auto;
+      font-size: 13px;
+    }
 
-  .complete-button:disabled {
-    opacity: 0.6;
-    cursor: default;
-  }
-
-  .lecture-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .lecture-row > div {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .lecture-row b {
-    display: block;
-  }
-
-  .lecture-row small {
-    display: block;
-    margin-top: 3px;
-    color: var(--muted);
-  }
-
-  .lecture-button {
-    flex-shrink: 0;
-  }
-
-  @media (max-width: 500px) {
-    .lecture-info {
-      grid-template-columns: 1fr;
+    .complete-button:disabled {
+      opacity: 0.6;
+      cursor: default;
     }
 
     .lecture-row {
-      flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lecture-row > div {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .lecture-row b {
+      display: block;
+    }
+
+    .lecture-row small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
     }
 
     .lecture-button {
-      width: 100%;
+      flex-shrink: 0;
     }
+
+    @media (max-width: 500px) {
+      .lecture-info {
+        grid-template-columns: 1fr;
+      }
+
+      .lecture-row {
+        flex-wrap: wrap;
+      }
+
+      .lecture-button {
+        width: 100%;
+      }
+    }
+  `;
+
+  document.head.appendChild(extraStyles);
+}
+
+/* =========================================================
+   INITIALIZATION
+   ========================================================= */
+
+function initializeSkillVerse() {
+  getElements();
+
+  updateStreak();
+  setupCategories();
+  renderCourses();
+  updateDashboard();
+  updateAchievements();
+  setupMobileMenu();
+  setupHeroButtons();
+  addExtraStyles();
+
+  document.querySelectorAll("[data-close]").forEach(element => {
+    element.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (
+      event.key === "Escape" &&
+      courseModal?.classList.contains("open")
+    ) {
+      closeModal();
+    }
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener("input", filterCourses);
   }
-`;
 
-document.head.appendChild(extraStyles);
+  if (categoryFilter) {
+    categoryFilter.addEventListener("change", filterCourses);
+  }
 
+  saveState();
 
-/* =========================================================
-   INITIALIZE
-   ========================================================= */
+  console.log("SkillVerse v1.2 loaded successfully 🚀");
+}
 
-updateStreak();
-
-setupCategories();
-
-renderCourses();
-
-updateDashboard();
-
-updateAchievements();
-
-saveState();
-
-
-/* =========================================================
-   STARTUP
-   ========================================================= */
-
-console.log(
-  "SkillVerse v1.2 loaded successfully 🚀"
-);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeSkillVerse);
+} else {
+  initializeSkillVerse();
+}
